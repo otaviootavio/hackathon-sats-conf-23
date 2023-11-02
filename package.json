@@ -1,0 +1,16 @@
+{
+  "name": "hackathon-sats-conf-23",
+  "license": "MIT",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn --cwd frontend run dev\" \"yarn --cwd backend run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
