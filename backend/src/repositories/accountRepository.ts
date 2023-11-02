@@ -1,40 +1,56 @@
 import Account from "../models/accountModel";
+import { initializeApp } from "firebase/app";
+import firebaseConfig from "../../firebaseConfig.json";
+import { getDatabase, ref, set, get, child, remove } from "firebase/database";
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 class AccountRepository {
   private accounts: Account[] = [];
 
   create(account: Account): Account {
-    console.log(account)
-    this.accounts.push(account);
+    set(ref(database, "accounts/" + account.id), account);
     return account;
   }
 
-  read(id: string): Account | null {
-    const account = this.accounts.find(account => account.id === id);
-    return account || null;
+  async read(id: string): Promise<Account | null> {
+    try {
+      const dbRef = ref(database);
+      const snapshot = await get(child(dbRef, `accounts/${id}`));
+      if (snapshot.exists()) {
+        const account: Account = <Account>snapshot.val();
+        return account;
+      } else {
+        console.log("No data available");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  update(id: string, updatedAccountData: Partial<Account>): Account | null {
-    const accountIndex = this.accounts.findIndex(account => account.id === id);
-    if (accountIndex === -1) return null;
-
-    const existingAccount = this.accounts[accountIndex];
-    const updatedAccount = { ...existingAccount, ...updatedAccountData, id };
-    this.accounts[accountIndex] = updatedAccount;
-    
-    return updatedAccount;
-  }
-
-  delete(id: string): boolean {
-    const accountIndex = this.accounts.findIndex(account => account.id === id);
-    if (accountIndex === -1) return false;
-
-    this.accounts.splice(accountIndex, 1);
+  delete(account: Account): boolean {
+    remove(ref(database, "accounts/" + account.id));
     return true;
   }
 
-  getAll(): Account[] {
-    return this.accounts;
+  async getAll(): Promise<Account[] | null> {
+    try {
+      const dbRef = ref(database);
+      const snapshot = await get(child(dbRef, "accounts"));
+      if (snapshot.exists()) {
+        const account: Account[] = <Account[]>snapshot.val();
+        return account;
+      } else {
+        console.log("No data available");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 }
 
