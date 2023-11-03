@@ -4,7 +4,7 @@ const paymentController = express.Router();
 
 paymentController.post("/request", async (req, res) => {
   try {
-    const data = await PaymentRepository.createCharge(req.body);
+    const data = await PaymentRepository.createCharge(req.body.amount);
     res.status(200).json({ data });
   } catch (error) {
     res.status(500).json({ error });

@@ -1,31 +1,35 @@
-const VOLTAGE_AUTH = process.env.VOLTAGE_AUTH;
-const VOLTAGE_BASE_URL = process.env.VOLTAGE_BASE_URL
+const ZDB_AUTH = process.env.VITE_ZDB_AUTH;
+const ZDB_BASE_URL = process.env.VITE_ZDB_BASE_URL;
 
 //TODO
 //Implement payments
 
 class PaymentRepository {
-  async createCharge(request: any): Promise<any> {
-    const res = await fetch(`${VOLTAGE_BASE_URL}/v0/charges`, {
+  async createCharge(amount: number): Promise<any> {
+
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("apikey", ZDB_AUTH as string);
+
+    const requestOptions = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-VOLTAGE-AUTH": `${VOLTAGE_AUTH}`,
-      },
+      headers: headers,
       body: JSON.stringify({
-        capacity: 1000000,
-        self_chan_balance: 100000,
-        lease_duration_blocks: 2016,
-        node_tier: "any",
-        bps: 18,
+        expiresIn: 300,
+        amount: amount,
+        description: "My Charge Test Zapier",
+        // internalId: "11af01d092444a317cb33faa6b8304b8",
+        // callbackUrl: "https://my-website.com/zbd-callback",
       }),
-    });
-    console.log(res);
+    };
+
+    const data = await fetch(`${ZDB_BASE_URL}/v0/charges`, requestOptions)
+      .then((response) => response.json())
+
+    return data;
   }
 
-  async sendLightningAddressPayment(
-    payment: any
-  ): Promise<any> {
+  async sendLightningAddressPayment(payment: any): Promise<any> {
     return "todo";
   }
 }
