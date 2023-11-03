@@ -1,0 +1,167 @@
+/* AccountsView.css */
+.accounts-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .account {
+    padding: 15px;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 10px;
+  }
+  
+  .account:last-child {
+    border-bottom: none;
+  }
+  
+  .account h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .account span {
+    display: block; /* each piece of info on a new line */
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .account b {
+    font-weight: bold;
+    color: #000;
+    margin-right: 5px;
+  }
+  
+  .account .amount {
+    font-size: 1.1rem;
+    color: #008000; /* green color for amounts */
+    font-weight: bold;
+  }
+
+  /* ResultsView.css */
+.results-container {
+  margin: 20px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.results-container h3 {
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.result-item {
+  margin: 10px 0;
+  padding: 10px;
+  background: #f8f8f8;
+  border-left: 3px solid #2196f3; /* Blue border for visual accent */
+}
+
+.result-item.negative {
+  border-left-color: #f44336; /* Red border for debts */
+}
+
+.result-item span {
+  font-size: 1rem;
+}
+
+.result-account {
+  font-weight: bold;
+}
+
+.result-balance {
+  float: right;
+  font-weight: bold;
+}
+
+/* ResultsView.css */
+.results-container {
+  margin: 20px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.results-container h3 {
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.result-item {
+  margin: 10px 0;
+  padding: 10px;
+  background: #f8f8f8;
+  border-left: 3px solid #2196f3; /* Blue border for visual accent */
+}
+
+.result-item.negative {
+  border-left-color: #f44336; /* Red border for debts */
+}
+
+.result-item span {
+  font-size: 1rem;
+}
+
+.result-account {
+  font-weight: bold;
+}
+
+.result-balance {
+  float: right;
+  font-weight: bold;
+}
+
+/* AccountsView.css */
+.accounts-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account {
+  padding: 15px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 10px;
+}
+
+.account:last-child {
+  border-bottom: none;
+}
+
+.account h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.account span {
+  display: block; /* each piece of info on a new line */
+  margin: 5px 0;
+  color: #555;
+}
+
+.account b {
+  font-weight: bold;
+  color: #000;
+  margin-right: 5px;
+}
+
+.account .amount {
+  font-size: 1.1rem;
+  color: #008000; /* green color for amounts */
+  font-weight: bold;
+}

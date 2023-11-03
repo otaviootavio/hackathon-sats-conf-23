@@ -107,7 +107,10 @@ const EntryAccount = () => {
             <AccountsView accountArray={accounts} />
           </aside>
           <>
-            <AddAccountForms currentGroupId={currentAccountGroup} onSave={onSave} />
+            <AddAccountForms
+              currentGroupId={currentAccountGroup}
+              onSave={onSave}
+            />
           </>
         </section>
       )}
@@ -123,10 +126,12 @@ const EntryAccount = () => {
                 <h3>Results:</h3>
                 {Object.entries(balances).map(([account, balance]) => (
                   <div key={account}>
-                    {account}:{" "}
-                    {balance < 0
-                      ? `Debt: ${Math.abs(balance)}`
-                      : `Credit: ${balance}`}
+                    <span className="result-account">{account}: </span>
+                    <span className="result-balance">
+                      {balance < 0
+                        ? `Debt: ${Math.abs(balance)}`
+                        : `Credit: ${balance}`}
+                    </span>
                   </div>
                 ))}
               </div>
