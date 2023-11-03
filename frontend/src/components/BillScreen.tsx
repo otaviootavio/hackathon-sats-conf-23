@@ -1,41 +1,31 @@
 import React, { useState } from "react";
-import MainAccount from "./MainAccount";
+import { PaginationList } from "./types/pagination.type";
 
+type Props = {
+  setCurrentPage: React.Dispatch<React.SetStateAction<PaginationList>>;
+};
 
-function BillScreen() {
-  const [currentPage, setCurrentPage] = useState("bill");
-
+function BillScreen(props: Props) {
   const handleCreateBillClick = () => {
-    setCurrentPage("main-account");
+    props.setCurrentPage(PaginationList.Main);
   };
-
 
   return (
     <div>
-      
-      {currentPage === "bill" && (
-        <div>
-          <h1>What's the Bill?</h1>
-          <br/>
-          <h2>Bill's information</h2>
-          <br/>
-            <form>
-              <input placeholder="Description" type="text" />
-            </form>
-          <br />
-          <form>
-              <input placeholder="Value" type = "number step = 0.01" />
-            </form>
-          <br />
-          <button onClick={handleCreateBillClick}>Insert Bill</button>
-          <br />
-        </div>
-      )}
-      {currentPage === "main-account" && (
-        <div>
-          <MainAccount />
-        </div>
-      )}
+      <h1>What's the Bill?</h1>
+      <br />
+      <h2>Bill's information</h2>
+      <br />
+      <form>
+        <input placeholder="Description" type="text" />
+      </form>
+      <br />
+      <form>
+        <input placeholder="Value" type="number step = 0.01" />
+      </form>
+      <br />
+      <button onClick={handleCreateBillClick}>Insert Bill</button>
+      <br />
     </div>
   );
 }

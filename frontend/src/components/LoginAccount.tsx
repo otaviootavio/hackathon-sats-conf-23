@@ -1,28 +1,32 @@
 import React, { useState } from "react";
-import ViewAccount from "./ViewAccount";
 import CreateAccount from "./CreateAccount";
 import AccessAccount from "./AccessAccount";
+import { PaginationList } from "./types/pagination.type";
+import MainAccount from "./MainAccount";
+import BillScreen from "./BillScreen";
+import ViewAccount from "./ViewAccount";
 
 function LoginAccount() {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState<PaginationList>(
+    PaginationList.Login
+  );
 
   const handleCreateAccountClick = () => {
-    setCurrentPage("create-account");
+    setCurrentPage(PaginationList.Create);
   };
 
   const handleAccessAccountClick = () => {
-    setCurrentPage("access-account");
+    setCurrentPage(PaginationList.Access);
   };
 
   return (
     <div>
-      
-      {currentPage === "home" && (
+      {currentPage === PaginationList.Login && (
         <div>
           <h1>Welcome</h1>
-            <form>
-              <input placeholder="Insert Your Nickname" type="text" />
-            </form>
+          <form>
+            <input placeholder="Insert Your Nickname" type="text" />
+          </form>
           <br />
           <button onClick={handleCreateAccountClick}>Create Account</button>
           <br />
@@ -30,14 +34,29 @@ function LoginAccount() {
           <button onClick={handleAccessAccountClick}>Access Account</button>
         </div>
       )}
-      {currentPage === "create-account" && (
+      {currentPage === PaginationList.Create && (
         <div>
-          <CreateAccount />
+          <CreateAccount setCurrentPage={setCurrentPage} />
         </div>
       )}
-      {currentPage === "access-account" && (
+      {currentPage === PaginationList.Access && (
         <div>
-          <AccessAccount />
+          <AccessAccount setCurrentPage={setCurrentPage} />
+        </div>
+      )}
+      {currentPage === PaginationList.Main && (
+        <div>
+          <MainAccount setCurrentPage={setCurrentPage} />
+        </div>
+      )}
+      {currentPage === PaginationList.Bill && (
+        <div>
+          <BillScreen setCurrentPage={setCurrentPage} />
+        </div>
+      )}
+      {currentPage === PaginationList.View && (
+        <div>
+          <ViewAccount setCurrentPage={setCurrentPage} />
         </div>
       )}
     </div>

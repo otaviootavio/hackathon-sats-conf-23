@@ -1,35 +1,25 @@
 import React, { useState } from "react";
-import MainAccount from "./MainAccount";
+import { PaginationList } from "./types/pagination.type";
 
-function CreateAccount() {
-  const [currentPage, setCurrentPage] = useState("create-account");
+type Props = {
+  setCurrentPage: React.Dispatch<React.SetStateAction<PaginationList>>;
+};
 
-  const handleCreateClick = () => {
-    setCurrentPage("main-account");
+function CreateAccount(props: Props) {
+  const handleMainAccountClick = () => {
+    props.setCurrentPage(PaginationList.Main);
   };
 
   return (
     <div>
-      
+      <h1>Creating Account</h1>
       <br />
-      {currentPage === "create-account" && (
-        <div>
-            <h1>Creating Account</h1>
-            <br/>
-            <h2>Do you wanna to put a password?</h2>
-            <form>
-              <input placeholder="Insert Passward" type="text" />
-            </form>
-            <br/>
-          <button onClick={handleCreateClick}>Create Account</button>
-          <br />
-        </div>
-      )}
-      {currentPage === "main-account" && (
-        <div>
-          <MainAccount />
-        </div>
-      )}
+      <h2>Do you wanna to put a password?</h2>
+      <form>
+        <input placeholder="Insert Passward" type="text" />
+      </form>
+      <br />
+      <button onClick={handleMainAccountClick}>Create Account</button>
     </div>
   );
 }
