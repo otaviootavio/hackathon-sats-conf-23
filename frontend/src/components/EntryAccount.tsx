@@ -116,7 +116,7 @@ const EntryAccount = () => {
           <aside>
             <div>
               <h2>Account Balances</h2>
-              <button onClick={handleEndTheSplit}>
+              <button className="button-main" onClick={handleEndTheSplit}>
                 Calculate Debts and Credits
               </button>
               <div>
