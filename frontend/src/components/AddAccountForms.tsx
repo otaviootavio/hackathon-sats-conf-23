@@ -3,9 +3,12 @@ import Account from "./types/accountModel";
 
 type Props = {
   onSave: (account: Account) => void;
+  currentGroupId: string;
 };
 
 const AddAccountForms = (props: Props) => {
+  const [newId, setNewId] = useState<number>(0)
+
   const [account, setAccount] = useState({
     id: "",
     groupId: "",
@@ -20,32 +23,13 @@ const AddAccountForms = (props: Props) => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
+    setNewId(prev => prev + 1)
     e.preventDefault();
     props.onSave(account);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="id">ID:</label>
-        <input
-          type="text"
-          id="id"
-          name="id"
-          value={account.id}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="groupId">Group ID:</label>
-        <input
-          type="text"
-          id="groupId"
-          name="groupId"
-          value={account.groupId}
-          onChange={handleChange}
-        />
-      </div>
       <div>
         <label htmlFor="from">From:</label>
         <input

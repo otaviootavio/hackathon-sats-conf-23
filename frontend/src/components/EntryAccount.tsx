@@ -54,22 +54,18 @@ const myArrayAccounts: Account[] = myAccounts.id;
 const EntryAccount = () => {
   const [accounts, setAccounts] = useState<Account[]>(myArrayAccounts);
   const [currentAccountGroup, setCurretnAccountGroup] = useState<string>("");
-  const [newAccountGroupId, setNewAccountGroupId] = useState<string>("");
   const [balances, setBalances] = useState<Record<string, number>>({});
 
   const onSave = (newAccount: Account) => {
     setAccounts([...accounts, newAccount]);
-    console.log(accounts);
   };
 
   const searchAccountGroup = () => {
-    setCurretnAccountGroup(newAccountGroupId);
     setAccounts(
       myArrayAccounts.filter((e) => {
-        return e.groupId === newAccountGroupId;
+        return e.groupId === currentAccountGroup;
       })
     );
-    console.log(newAccountGroupId);
   };
 
   const handleEndTheSplit = async () => {
@@ -77,7 +73,6 @@ const EntryAccount = () => {
       accounts
     );
     setBalances(result);
-    console.log(result);
   };
 
   return (
@@ -88,13 +83,13 @@ const EntryAccount = () => {
           <img src={logo} alt="Logo" className="corner-image"></img>
         </header>
         <aside>
-          <h3>Entry the account address</h3>
+          <h3>Entry the group id</h3>
           <div>
             <input
               type="text"
-              value={newAccountGroupId}
+              value={currentAccountGroup}
               onChange={(e) => {
-                setNewAccountGroupId(e.target.value);
+                setCurretnAccountGroup(e.target.value);
               }}
             />
             <input
@@ -110,39 +105,34 @@ const EntryAccount = () => {
         <section>
           <aside>
             <AccountsView accountArray={accounts} />
-            <br />
-            <input
-              type="button"
-              className="button-main"
-              onClick={handleEndTheSplit}
-              value={"End the split!"}
-            />
           </aside>
           <>
-            <AddAccountForms onSave={onSave} />
+            <AddAccountForms currentGroupId={currentAccountGroup} onSave={onSave} />
           </>
         </section>
       )}
       <section>
-        <aside>
-          <div>
-            <h3>Account Balances</h3>
-            <button className="button-main" onClick={handleEndTheSplit}>
-              Calculate Debts and Credits
-            </button>
+        {currentAccountGroup && (
+          <aside>
             <div>
-              <h3>Results:</h3>
-              {Object.entries(balances).map(([account, balance]) => (
-                <div key={account}>
-                  {account}:{" "}
-                  {balance < 0
-                    ? `Debt: ${Math.abs(balance)}`
-                    : `Credit: ${balance}`}
-                </div>
-              ))}
+              <h2>Account Balances</h2>
+              <button onClick={handleEndTheSplit}>
+                Calculate Debts and Credits
+              </button>
+              <div>
+                <h3>Results:</h3>
+                {Object.entries(balances).map(([account, balance]) => (
+                  <div key={account}>
+                    {account}:{" "}
+                    {balance < 0
+                      ? `Debt: ${Math.abs(balance)}`
+                      : `Credit: ${balance}`}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </aside>
+          </aside>
+        )}
       </section>
     </>
   );
