@@ -16,7 +16,7 @@ function CreateAccount(props: Props) {
       <br />
       <h2>Do you wanna to put a password?</h2>
       <form>
-        <input placeholder="Insert Passward" type="text" />
+        <input placeholder="Insert Password" type="text" />
       </form>
       <br />
       <button onClick={handleMainAccountClick}>Create Account</button>
