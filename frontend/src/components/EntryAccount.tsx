@@ -119,7 +119,7 @@ const EntryAccount = () => {
         </section>
       )}
       <section>
-        <aside>
+        {currentAccountGroup && <aside>
           <div>
             <h2>Account Balances</h2>
             <button onClick={handleEndTheSplit}>
@@ -137,7 +137,7 @@ const EntryAccount = () => {
               ))}
             </div>
           </div>
-        </aside>
+        </aside>}
       </section>
     </>
   );
