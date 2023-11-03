@@ -1,13 +1,9 @@
-type Entry = {
-  description: string;
-  amount: number;
-}
-
 type Account = {
   id: string;
-  entries: Entry[];
-  outputs: Entry[];
-  originName: string;
+  groupId: string;
+  from: string;
+  to: string;
+  amount: string;
 }
 
 export default Account;
