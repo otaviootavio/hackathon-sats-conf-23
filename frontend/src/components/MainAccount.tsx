@@ -9,11 +9,18 @@ function MainAccount(props: Props) {
   const handleBillScreenClick = () => {
     props.setCurrentPage(PaginationList.Bill);
   };
+  const handleViewAccountClick = () => {
+    props.setCurrentPage(PaginationList.View);
+  };
 
   return (
     <div>
-      <button onClick={handleBillScreenClick}>Add Fatura</button>
+      <div>Your balance: 2000 Sats</div> 
       <br />
+      <button onClick={handleBillScreenClick}>Add Bill</button>
+      <br />
+      <br />
+      <button onClick={handleViewAccountClick}>Finish</button>
     </div>
   );
 }

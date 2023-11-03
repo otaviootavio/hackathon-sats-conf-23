@@ -14,7 +14,7 @@ function AccessAccount(props: Props) {
     <div>
       <h1>Accessing Account</h1>
       <br />
-      <h2>Plese, insert the Account ID</h2>
+      <h2>Please, insert the Account ID</h2>
       <form>
         <input placeholder="ID" type="text" />
       </form>

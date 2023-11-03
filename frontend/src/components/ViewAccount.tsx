@@ -6,8 +6,7 @@ type Props = {
 };
 
 const ViewAccount = (props: Props) => {
-  //todo
-  // mock the account data
+
   return <div>ViewAccount</div>;
 };
 
