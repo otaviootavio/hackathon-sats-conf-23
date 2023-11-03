@@ -60,7 +60,7 @@ const AddAccountForms = (props: Props) => {
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Save</button>
+      <button className="button-main" type="submit">Save</button>
     </form>
   );
 };

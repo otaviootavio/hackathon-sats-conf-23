@@ -3,6 +3,7 @@ import Accounts from "./types/accountsModel";
 import AccountsView from "./AccountsView";
 import AddAccountForms from "./AddAccountForms";
 import Account from "./types/accountModel";
+import logo from "../assets/logo.png";
 
 async function calculateDebtAndCredit(
   transList: Account[]
@@ -79,6 +80,7 @@ const EntryAccount = () => {
       <section>
         <header>
           <h2>DutchLight</h2>
+          <img src={logo} alt="Logo" className="corner-image"></img>
         </header>
         <aside>
           <h3>Entry the group id</h3>
@@ -92,7 +94,8 @@ const EntryAccount = () => {
             />
             <input
               type="button"
-              value={"LetsGo!"}
+              value={"Lets Go!"}
+              className="button-main"
               onClick={searchAccountGroup}
             />
           </div>
