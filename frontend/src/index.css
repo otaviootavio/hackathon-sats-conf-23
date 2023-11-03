@@ -534,3 +534,31 @@ blockquote footer {
   background-color: rgb(202, 202, 232);
   border-radius: 10px;
 }
+
+.pointer-cursor {
+  cursor: pointer;
+}
+
+.corner-image {
+  position: fixed;
+  bottom: -50px; 
+  right: -50px; 
+  transform-origin: bottom right;
+  width: 150px; 
+  height: 150px;
+}
+.button-main {
+  background-color: #e55100;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito hover */
+.button-main:hover {
+  background-color: #ff8000;
+}
