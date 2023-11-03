@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import accountRouter from './routers/accountRouter';
+import paymentRouter from './routers/paymentRouter';
 
 const app = express();
 
@@ -15,7 +16,9 @@ app.use(helmet());
 
 app.use(express.json());
 
+app.use('/api', paymentRouter);
 app.use('/api', accountRouter);
+
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     res.status(500).send(error.message);

@@ -1,12 +1,12 @@
 import './App.css'
-import LoginAccount from './components/LoginAccount'
+import EntryAccount from './components/EntryAccount'
 
 function App() {
-  // todo
-  // 1. manage the app user flow ( go to login view account )
   return (
     <>
-    <LoginAccount />
+    <main>
+      <EntryAccount />
+    </main>
     </>
   )
 }
