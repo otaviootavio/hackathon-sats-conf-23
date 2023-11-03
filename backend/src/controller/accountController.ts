@@ -23,7 +23,6 @@ accountController.get('/all', async (req, res) => {
 
 accountController.get('/:id', async (req, res) => {
   const account = await accountRepository.read(req.params.id);
-  console.log(account)
   if (account) {
     res.json(account);
   } else {
